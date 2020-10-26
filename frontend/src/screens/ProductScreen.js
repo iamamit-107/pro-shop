@@ -1,13 +1,21 @@
-import React from "react";
+import Axios from "axios";
+import React, { useEffect, useState } from "react";
 import { Button, Card, Col, Image, ListGroup, Row } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 import Rating from "../components/Rating";
-import products from "../products";
 
 const ProductScreen = () => {
     const { id } = useParams();
-    const product = products.find((p) => p._id === id);
-    console.log(product);
+    const [product, setProduct] = useState([]);
+    useEffect(() => {
+        const fetchProduct = async () => {
+            const { data } = await Axios.get(`/api/products/${id}`);
+            setProduct(data);
+        };
+
+        fetchProduct();
+    }, [id]);
+
     return (
         <>
             <Link className="btn btn-light my-3" to="/">
