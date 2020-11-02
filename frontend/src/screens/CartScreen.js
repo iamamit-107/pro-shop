@@ -86,8 +86,7 @@ const CartScreen = ({ location, history }) => {
                                                     key={x + 1}
                                                     value={x + 1}
                                                 >
-                                                    {" "}
-                                                    {x + 1}{" "}
+                                                    {x + 1}
                                                 </option>
                                             ))}
                                         </Form.Control>
